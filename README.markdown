@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/substack/browser-launcher.png)](http://travis-ci.org/substack/browser-launcher)
 # browser-launcher
 
 Detect the browser versions available on your system and launch them in an
