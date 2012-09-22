@@ -14,7 +14,6 @@ exports = module.exports = function (opts, cb) {
     if (!opts) opts = {};
     
     config.read(opts.config, function (err, cfg, configDir) {
-        if (err) return cb(err);
         if (!cfg) {
             exports.setup(configDir, function (err, cfg) {
                 if (err) console.error(err)
@@ -58,8 +57,8 @@ function launcher (cfg, uri, opts, cb) {
     
     var version = opts.version || opts.browser.split('/')[1] || '*';
     var name = opts.browser.split('/')[0];
-    
     var runner = run(cfg, name, version);
+
     if (!runner) return cb('no matches for ' + name + '/' + version);
     runner(uri, opts, cb);
 }

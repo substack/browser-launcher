@@ -11,7 +11,8 @@
     "dependencies" : {
         "headless" : "~0.1.0",
         "merge" : "~1.0.0",
-        "mkdirp" : "~0.3.3"
+        "mkdirp" : "~0.3.3",
+        "plist" : "0.2.1"
     },
     "repository" : {
         "type" : "git",
@@ -24,7 +25,11 @@
         "phantom",
         "chrome",
         "firefox",
-        "chromium"
+        "chromium",
+        "safari",
+        "ie",
+        "osx",
+        "windows"
     ],
     "author" : {
         "name" : "James Halliday",
