@@ -6,11 +6,12 @@ launcher(function (err, launch) {
     console.dir(launch.browsers);
     
     var opts = {
-        headless : true,
         browser : 'chrome',
-        proxy : 'localhost:7077',
+        //headless : true,
+        //proxy : 'localhost:7077',
     };
     launch('http://substack.net', opts, function (err, ps) {
         if (err) return console.error(err);
+        ps.on('exit', console.log);
     });
 });
