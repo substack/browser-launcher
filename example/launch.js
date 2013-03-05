@@ -7,6 +7,7 @@ launcher(function (err, launch) {
     
     var opts = {
         browser : 'chrome',
+        //options:['--remote-debugging-port=9222','--disable-hang-monitor'],
         //headless : true,
         //proxy : 'localhost:7077',
     };
