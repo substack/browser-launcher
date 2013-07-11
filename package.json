@@ -9,7 +9,7 @@
         "test" : "test"
     },
     "dependencies" : {
-        "headless" : "~0.1.2",
+        "headless" : "~0.1.3",
         "merge" : "~1.0.0",
         "mkdirp" : "~0.3.3",
         "plist" : "0.2.1"
