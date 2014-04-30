@@ -9,7 +9,7 @@ the proxy configuration on the fly.
 # example
 
 ``` js
-var launcher = require('launcher');
+var launcher = require('browser-launcher');
 launcher(function (err, launch) {
     if (err) return console.error(err);
     
