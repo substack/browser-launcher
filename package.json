@@ -12,7 +12,8 @@
         "headless" : "~0.1.3",
         "merge" : "~1.0.0",
         "mkdirp" : "~0.3.3",
-        "plist" : "0.2.1"
+        "plist" : "0.2.1",
+        "cross-spawn": "^0.1.7"
     },
     "bundledDependencies" : [ "headless" ],
     "repository" : {
