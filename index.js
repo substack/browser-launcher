@@ -20,7 +20,7 @@ exports = module.exports = function (opts, cb) {
                 else cb(null, wrap(cfg))
             });
         }
-        else cb(null, wrap(cfg))
+        else cb(null, wrap(extend(cfg, {isStale: true, configDir: configDir})))
     });
     
     function wrap (cfg) {
@@ -49,16 +49,38 @@ exports.setup = function (configDir, cb) {
     });
 };
 
+function extend (target, source) {
+  target || (target = {});
+  for (var prop in source) {
+    target[prop] = source[prop];
+  }
+  return target;
+}
+
 function launcher (cfg, uri, opts, cb) {
     if (typeof opts === 'string') {
         opts = { browser : opts };
     }
     if (!opts) opts = {};
     
-    var version = opts.version || opts.browser.split('/')[1] || '*';
-    var name = opts.browser.split('/')[0];
-    var runner = run(cfg, name, version);
-
-    if (!runner) return cb('no matches for ' + name + '/' + version);
-    runner(uri, opts, cb);
+    function runRunner (runCfg, noRunner) {
+        var version = opts.version || opts.browser.split('/')[1] || '*';
+        var name = opts.browser.split('/')[0];
+        var runner = run(runCfg, name, version) || 'no matches for ' + name + '/' + version;
+        if (typeof runner === 'function') runner(uri, opts, cb)
+        else noRunner(runner)
+    }
+    
+    var isStale = cfg.isStale;
+    var configDir = cfg.configDir;
+    
+    runRunner(cfg, function (err) {
+        if (isStale && configDir) {
+            exports.setup(configDir, function (setupErr, refreshedCfg) {
+                if (setupErr) cb(setupErr)
+                else runRunner(refreshedCfg, cb)
+            });
+        }
+        else cb(err)
+    });
 }
