@@ -1,9 +1,8 @@
+var path = require('path');
 var config = require('./lib/config');
 var detect = require('./lib/detect');
 var run = require('./lib/run');
 var createProfiles = require('./lib/create_profiles');
-
-var path = require('path');
 
 exports = module.exports = function (opts, cb) {
     if (typeof opts === 'function') {
