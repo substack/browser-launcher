@@ -1,10 +1,10 @@
-var launcher = require('../');
+var launcher = require('../index.js');
 launcher(function (err, launch) {
     if (err) return console.error(err);
-    
+
     console.log('# available browsers:');
     console.dir(launch.browsers);
-    
+
     var opts = {
         browser : 'chrome',
         //options:['--remote-debugging-port=9222','--disable-hang-monitor'],
