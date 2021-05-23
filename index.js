@@ -5,7 +5,6 @@ var createProfiles = require('./lib/create_profiles');
 var extend = require('xtend');
 
 var path = require('path');
-var spawn = require('child_process').spawn;
 
 exports = module.exports = function (opts, cb) {
     if (typeof opts === 'function') {
