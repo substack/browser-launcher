@@ -14,8 +14,7 @@
     "headless": "^1.2.0",
     "minimist": "^1.2.0",
     "mkdirp": "^1.0.4",
-    "plist": "^3.0.1",
-    "xtend": "^4.0.2"
+    "plist": "^3.0.1"
   },
   "repository": {
     "type": "git",
