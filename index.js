@@ -13,7 +13,7 @@ exports = module.exports = function (opts, cb) {
         opts = {};
     }
     if (!opts) opts = {};
-    
+
     config.read(opts.config, function (err, cfg, configDir) {
         if (!cfg) {
             exports.setup(configDir, function (err, cfg) {
@@ -23,7 +23,7 @@ exports = module.exports = function (opts, cb) {
         }
         else cb(null, wrap(extend(cfg, {isStale: true, configDir: configDir})))
     });
-    
+
     function wrap (cfg) {
         var res = launcher.bind(null, cfg);
         res.browsers = cfg.browsers;
@@ -55,7 +55,7 @@ function launcher (cfg, uri, opts, cb) {
         opts = { browser : opts };
     }
     if (!opts) opts = {};
-    
+
     function runRunner (runCfg, noRunner) {
         var version = opts.version || opts.browser.split('/')[1] || '*';
         var name = opts.browser.split('/')[0];
@@ -63,10 +63,10 @@ function launcher (cfg, uri, opts, cb) {
         if (typeof runner === 'function') runner(uri, opts, cb)
         else noRunner(runner)
     }
-    
+
     var isStale = cfg.isStale;
     var configDir = cfg.configDir;
-    
+
     runRunner(cfg, function (err) {
         if (isStale && configDir) {
             exports.setup(configDir, function (setupErr, refreshedCfg) {
