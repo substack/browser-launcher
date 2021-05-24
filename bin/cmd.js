@@ -4,7 +4,7 @@ var argv = minimist(process.argv.slice(2), {
     alias: { c: 'config' }
 });
 
-var config = require('../lib/config.js');
+var config = require('../lib/config');
 var cfile = argv.c || config.defaultConfigFile;
 
 config.read(cfile, function (err, cfg, cdir) {

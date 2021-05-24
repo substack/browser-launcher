@@ -1,4 +1,4 @@
-var launcher = require('../index.js');
+var launcher = require('../');
 launcher(function (err, launch) {
     if (err) return console.error(err);
 
